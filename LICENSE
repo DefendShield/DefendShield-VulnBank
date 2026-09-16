@@ -19,13 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-------------------------------------------------------------------------------
-TRAINING-LAB DISCLAIMER
-
-This software is INTENTIONALLY VULNERABLE and is provided solely for authorized
-security education, teaching, and research in an isolated environment. It must
-NOT be deployed to any public, shared, or production network. Only use it
-against systems you own or are explicitly authorized to test. The authors
-accept no liability for misuse or for any damage resulting from deployment
-outside a controlled lab.

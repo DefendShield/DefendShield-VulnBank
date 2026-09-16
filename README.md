@@ -35,3 +35,13 @@ npm test                       # run the API/vulnerability test harness (101/101
 | A08 Integrity Failures | unsigned import, missing SRI, CSV injection |
 | A09 Logging Failures | no auth/transfer/admin logging |
 | A10 SSRF | avatar-by-URL, webhook tester, cloud-metadata reach |
+
+## License & disclaimer
+
+Licensed under the [MIT License](LICENSE).
+
+> **Training-lab disclaimer.** This software is **intentionally vulnerable** and is provided solely for
+> authorized security education, teaching, and research in an **isolated environment**. Do **not** deploy it
+> to any public, shared, or production network. Only use it against systems you own or are explicitly
+> authorized to test. The authors accept no liability for misuse or for any damage resulting from
+> deployment outside a controlled lab.
