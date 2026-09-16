@@ -6,12 +6,54 @@ An **intentionally vulnerable** web application for teaching web penetration tes
 > ⚠ **DO NOT DEPLOY.** Localhost teaching lab only. Contains real, exploitable vulnerabilities and
 > fake seeded data. See safety rails in [docs/SETUP.md](docs/SETUP.md).
 
-## Quick start
+## Running steps
+
+**Requirements:** Node.js 20+ (and npm), or Docker + Docker Compose. Runs on `127.0.0.1` only.
+
+### 1. Get the code
 ```bash
-docker compose up --build      # http://127.0.0.1:3000
-# or:  npm install && npm start
-npm test                       # run the API/vulnerability test harness (101/101 on a clean run)
+git clone https://github.com/DefendShield/DefendShield-VulnBank
+cd DefendShield-VulnBank
 ```
+
+### 2. Run it — pick one
+
+**Option A — Docker (recommended):**
+```bash
+docker compose up --build
+```
+
+**Option B — Node directly:**
+```bash
+npm install
+npm start                 # default port 3000
+# PORT=3001 npm start     # use another port if 3000 is busy
+```
+
+### 3. Open the app
+Browse to **http://127.0.0.1:3000** (or `:3001` if you set `PORT`).
+
+Sample logins (simulated data — intentionally weak):
+
+| Username | Password | Role |
+|----------|----------|------|
+| admin    | admin      | admin |
+| alice    | password1  | customer |
+| bob      | hunter2    | customer |
+
+### 4. (Optional) Run the test harness
+```bash
+npm run reseed            # reset to a clean state first
+npm test                  # 101/101 automated checks (14 manual/client-side skips)
+```
+
+### 5. Reset between sessions
+```bash
+npm run reseed            # wipe & re-seed fake data for a clean lab
+```
+
+> **Docker on Kali/Linux:** if `docker compose build` fails with a `docker-credential-desktop` error,
+> run `sed -i '/"credsStore": "desktop"/d' ~/.docker/config.json` and retry. See [docs/SETUP.md](docs/SETUP.md).
 
 ## Documentation
 - **[docs/IMPLEMENTATION-PLAN.md](docs/IMPLEMENTATION-PLAN.md)** — full 200+ vulnerability catalogue, phased, mapped to OWASP.
