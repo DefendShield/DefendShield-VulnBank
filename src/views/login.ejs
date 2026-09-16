@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+<div style="max-width:420px;margin:20px auto">
+  <div class="card">
+    <h2 style="text-align:center">Sign in to Online Banking</h2>
+    <p class="muted" style="text-align:center;margin-top:-4px">Welcome back. Please enter your details.</p>
+    <% if (error) { %><div class="alert err"><%- error %></div><% } %>
+    <form method="post" action="/login">
+      <label>Username</label>
+      <input name="username" placeholder="Enter your username" autofocus>
+      <label>Password</label>
+      <input name="password" type="password" placeholder="Enter your password">
+      <div style="margin-top:20px"><button class="btn block">Sign in securely</button></div>
+    </form>
+    <div style="text-align:center;margin-top:16px">
+      <a href="/reset">Forgot password?</a> &nbsp;·&nbsp; <a href="/register">Open an account</a>
+    </div>
+  </div>
+  <p class="muted" style="text-align:center">🔒 Your connection is encrypted. Meridian Trust will never ask for your password by email.</p>
+</div>
+<%- include('partials/footer') %>

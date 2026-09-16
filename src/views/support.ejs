@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<div class="grid cols-2">
+  <div class="card">
+    <h2>Message us</h2>
+    <p class="muted" style="margin-top:-4px">Our team typically replies within one business day.</p>
+    <form method="post" action="/support">
+      <label>Subject</label><input name="subject" placeholder="How can we help?">
+      <label>Message</label><textarea name="body" rows="5" placeholder="Write your message…"></textarea>
+      <div style="margin-top:16px"><button class="btn">Send message</button></div>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Recent messages</h2>
+    <table>
+      <thead><tr><th>#</th><th>From</th><th>Subject</th><th>Preview</th></tr></thead>
+      <tbody>
+        <% msgs.forEach(function(m){ %>
+          <tr><td><a href="/message/<%= m.id %>"><%= m.id %></a></td>
+          <td><%= m.username %></td><td><%= m.subject %></td><td><%- m.body %></td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/footer') %>

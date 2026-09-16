@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+<div class="card" style="background:linear-gradient(120deg,#0a2540,#164a86);color:#fff;border:0;padding:44px 40px">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:30px;justify-content:space-between">
+    <div style="max-width:520px">
+      <div style="color:#c9a227;font-weight:700;letter-spacing:2px;font-size:12px">MERIDIAN TRUST · PRIVATE BANKING</div>
+      <h1 style="color:#fff;font-size:34px;line-height:1.2;margin:10px 0 14px">Banking built on trust, security, and simplicity.</h1>
+      <p style="color:#cdd8e6;font-size:16px">Manage accounts, move money, and stay on top of your finances —
+      anytime, anywhere, protected by bank-grade security.</p>
+      <div style="margin-top:22px;display:flex;gap:12px">
+        <a class="btn" href="/login">Sign in to Online Banking</a>
+        <a class="btn ghost" href="/register" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)">Open an account</a>
+      </div>
+    </div>
+    <div style="flex:1;min-width:260px;max-width:320px">
+      <div class="tile gold" style="transform:rotate(-3deg)">
+        <div class="chip"></div>
+        <div class="label">Meridian Signature</div>
+        <div class="amount" style="font-family:ui-monospace,monospace;font-size:20px;letter-spacing:2px">4•• •••• •••• 1111</div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;font-size:12px">
+          <span>A. CUSTOMER</span><span>12/29</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid cols-3">
+  <div class="card"><h3>🔐 Bank-grade security</h3><p class="muted">Multi-factor authentication and 256-bit encryption protect every session.</p></div>
+  <div class="card"><h3>⚡ Instant transfers</h3><p class="muted">Move money between accounts and to others in seconds.</p></div>
+  <div class="card"><h3>📊 Smart insights</h3><p class="muted">Track spending and balances with a clear activity view.</p></div>
+</div>
+
+<div class="card">
+  <h2>Sign-in details</h2>
+  <p class="muted">Use one of the sample logins below to access your accounts.</p>
+  <table>
+    <thead><tr><th>Username</th><th>Password</th><th>Profile</th></tr></thead>
+    <tbody>
+      <tr><td>admin</td><td>admin</td><td><span class="badge admin">Administrator</span></td></tr>
+      <tr><td>alice</td><td>password1</td><td><span class="badge user">Customer</span></td></tr>
+      <tr><td>bob</td><td>hunter2</td><td><span class="badge user">Customer</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<%- include('partials/footer') %>

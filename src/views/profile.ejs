@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<div class="grid cols-2">
+  <div class="card">
+    <h2>Account settings</h2>
+    <p class="muted" style="margin-top:-4px">Profile for <b><%= target.username %></b> (#<%= target.id %>)</p>
+    <% if (msg) { %><div class="alert ok"><%= msg %></div><% } %>
+    <form method="post" action="/profile/<%= target.id %>">
+      <label>Email address</label><input name="email" value="<%= target.email %>">
+      <label>Full name</label><input name="full_name" value="<%= target.full_name %>">
+      <label>Display name</label><input name="display_name" value="<%= target.display_name %>">
+      <div style="margin-top:20px"><button class="btn">Save changes</button></div>
+    </form>
+  </div>
+  <div class="card">
+    <h3>On file</h3>
+    <p class="muted" style="margin:0">Role</p><div><span class="badge <%= target.role==='admin'?'admin':'user' %>"><%= target.role %></span></div>
+    <p class="muted" style="margin:12px 0 0">Social Security Number</p><div style="font-family:ui-monospace,monospace"><%= target.ssn %></div>
+    <p class="muted" style="margin:12px 0 0">Card number</p><div style="font-family:ui-monospace,monospace"><%= target.card_number %></div>
+    <hr>
+    <a class="muted" href="/greet">Preview display name →</a>
+  </div>
+</div>
+<%- include('partials/footer') %>

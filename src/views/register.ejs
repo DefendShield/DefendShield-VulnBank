@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<div style="max-width:440px;margin:20px auto">
+  <div class="card">
+    <h2 style="text-align:center">Open your account</h2>
+    <p class="muted" style="text-align:center;margin-top:-4px">Join Meridian Trust in a few steps.</p>
+    <% if (error) { %><div class="alert err"><%- error %></div><% } %>
+    <form method="post" action="/register">
+      <label>Username</label>
+      <input name="username" placeholder="Choose a username">
+      <label>Password</label>
+      <input name="password" type="password" placeholder="Create a password">
+      <label>Email address</label>
+      <input name="email" placeholder="you@example.com">
+      <div style="margin-top:20px"><button class="btn block">Create account</button></div>
+    </form>
+    <div style="text-align:center;margin-top:16px" class="muted">Already have an account? <a href="/login">Sign in</a></div>
+  </div>
+</div>
+<%- include('partials/footer') %>

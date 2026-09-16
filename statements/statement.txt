@@ -1,0 +1,4 @@
+VulnBank Statement — sample
+Account: ACCT-1001
+Opening balance: $5000
+This file exists so /download?file=statement.txt works. Now try ?file=../.env

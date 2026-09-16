@@ -1,0 +1,14 @@
+# INTENTIONALLY VULNERABLE — bound to localhost only. DO NOT expose to a network.
+services:
+  vulnbank:
+    build: .
+    container_name: vulnbank
+    # SAFETY RAIL: bind to 127.0.0.1 only so the lab is not reachable from the LAN.
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      # VB-067: secrets hardcoded / passed in the clear on purpose.
+      - JWT_SECRET=secret123
+      - SESSION_SECRET=keyboardcat
+    # No NODE_ENV -> development mode -> verbose stack traces (VB-105).
+    restart: unless-stopped

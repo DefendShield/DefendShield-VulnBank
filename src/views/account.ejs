@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+<% function money(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} %>
+<div style="margin-bottom:16px"><a href="/dashboard" class="muted">← Back to accounts</a></div>
+<div class="grid cols-2">
+  <div class="tile">
+    <div class="chip"></div>
+    <div class="label"><%= acct.type %> account</div>
+    <div class="amount"><%= money(acct.balance) %></div>
+    <div class="acct"><%= acct.acct_number %></div>
+  </div>
+  <div class="card" style="margin:0">
+    <h3>Account details</h3>
+    <p class="muted" style="margin:0">Account number</p><div style="font-family:ui-monospace,monospace"><%= acct.acct_number %></div>
+    <p class="muted" style="margin:10px 0 0">Available balance</p><div style="font-weight:600"><%= money(acct.balance) %></div>
+    <p class="muted" style="margin:10px 0 0">Type</p><div><%= acct.type %></div>
+  </div>
+</div>
+<div class="card">
+  <h2>Transactions</h2>
+  <table>
+    <thead><tr><th>Ref</th><th>From</th><th>To</th><th style="text-align:right">Amount</th><th>Memo</th></tr></thead>
+    <tbody>
+      <% txs.forEach(function(t){ %>
+        <tr><td>#<%= t.id %></td><td><%= t.from_acct %></td><td><%= t.to_acct %></td>
+        <td style="text-align:right;font-weight:600"><%= money(t.amount) %></td>
+        <td><%- t.memo %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<%- include('partials/footer') %>

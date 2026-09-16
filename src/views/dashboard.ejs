@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+<% var total = accounts.reduce(function(s,a){return s + Number(a.balance||0)},0);
+   function money(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} %>
+
+<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:6px">
+  <div>
+    <div class="muted">Welcome back</div>
+    <h1 style="margin:2px 0"><%= user.full_name || user.username %>
+      <span class="badge <%= user.role === 'admin' ? 'admin' : 'user' %>" style="vertical-align:middle"><%= user.role %></span>
+    </h1>
+  </div>
+  <div style="text-align:right">
+    <div class="muted">Total relationship balance</div>
+    <div style="font-size:26px;font-weight:700;color:var(--navy)"><%= money(total) %></div>
+  </div>
+</div>
+
+<div class="grid cols-3">
+  <% accounts.forEach(function(a, i){ var cls = i%3===0?'':(i%3===1?'alt':'gold'); %>
+    <a href="/account/<%= a.id %>" style="text-decoration:none">
+      <div class="tile <%= cls %>">
+        <div class="chip"></div>
+        <div class="label"><%= a.type %> account</div>
+        <div class="amount"><%= money(a.balance) %></div>
+        <div class="acct"><%= a.acct_number %></div>
+      </div>
+    </a>
+  <% }) %>
+</div>
+
+<div class="grid cols-2" style="margin-top:2px">
+  <div class="card">
+    <h2>Quick actions</h2>
+    <div class="grid quick" style="gap:12px">
+      <a href="/transfer">💸 &nbsp;Move money</a>
+      <a href="/support">✉️ &nbsp;Message us</a>
+      <a href="/search">🔎 &nbsp;Search activity</a>
+      <a href="/profile">⚙️ &nbsp;Account settings</a>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Your accounts</h2>
+    <table>
+      <thead><tr><th>Account</th><th>Type</th><th style="text-align:right">Balance</th></tr></thead>
+      <tbody>
+        <% accounts.forEach(function(a){ %>
+          <tr>
+            <td><a href="/account/<%= a.id %>"><%= a.acct_number %></a></td>
+            <td><%= a.type %></td>
+            <td style="text-align:right;font-weight:600"><%= money(a.balance) %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+<div style="max-width:420px;margin:20px auto">
+  <div class="card">
+    <h2 style="text-align:center">Reset your password</h2>
+    <p class="muted" style="text-align:center;margin-top:-4px">Enter your username and we'll send reset instructions.</p>
+    <% if (msg) { %><div class="alert info"><%- msg %></div><% } %>
+    <form method="post" action="/reset">
+      <label>Username</label>
+      <input name="username" placeholder="Your username">
+      <div style="margin-top:20px"><button class="btn block">Send reset link</button></div>
+    </form>
+    <div style="text-align:center;margin-top:16px"><a href="/login">Back to sign in</a></div>
+  </div>
+</div>
+<%- include('partials/footer') %>

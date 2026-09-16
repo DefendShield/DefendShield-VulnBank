@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Runtime / generated data (regenerated on start / reseed)
+db/*.sqlite
+logs/
+uploads/*
+!uploads/.gitkeep
+
+# Auto-generated JWT lab keypair (created on first run)
+keys/*.pem
+
+# Editor / OS
+.DS_Store
+*.swp

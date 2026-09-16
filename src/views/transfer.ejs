@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<div style="max-width:560px;margin:0 auto">
+  <div class="card">
+    <h2>Move money</h2>
+    <p class="muted" style="margin-top:-4px">Transfer funds between accounts or to another customer.</p>
+    <% if (msg) { %><div class="alert ok"><%- msg %></div><% } %>
+    <form method="post" action="/transfer">
+      <label>From account</label>
+      <select name="fromAcct">
+        <% accounts.forEach(function(a){ %><option value="<%= a.id %>"><%= a.acct_number %> — $<%= a.balance %></option><% }) %>
+      </select>
+      <label>To account (ID)</label>
+      <input name="toAcct" placeholder="Destination account ID">
+      <label>Amount</label>
+      <input name="amount" placeholder="0.00">
+      <label>Memo</label>
+      <input name="memo" placeholder="What's this for?">
+      <div style="margin-top:20px"><button class="btn block">Review &amp; send</button></div>
+    </form>
+  </div>
+</div>
+<%- include('partials/footer') %>

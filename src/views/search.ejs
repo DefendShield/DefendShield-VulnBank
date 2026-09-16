@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<% function money(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} %>
+<div class="card">
+  <h2>Search activity</h2>
+  <form method="get" action="/search" style="display:flex;gap:10px">
+    <input name="q" value="<%= q %>" placeholder="Search transaction memos…" style="flex:1">
+    <button class="btn navy">Search</button>
+  </form>
+  <% if (q) { %><p class="muted" style="margin-top:12px">Results for: <%- q %></p><% } %>
+  <% if (error) { %><div class="alert err">Query error: <%- error %></div><% } %>
+</div>
+<% if (rows && rows.length) { %>
+<div class="card">
+  <table>
+    <thead><tr><th>Ref</th><th>From</th><th>To</th><th style="text-align:right">Amount</th><th>Memo</th></tr></thead>
+    <tbody>
+      <% rows.forEach(function(r){ %>
+        <tr><td>#<%= r.id %></td><td><%= r.from_acct %></td><td><%= r.to_acct %></td>
+        <td style="text-align:right;font-weight:600"><%= money(r.amount) %></td><td><%- r.memo %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } %>
+<%- include('partials/footer') %>

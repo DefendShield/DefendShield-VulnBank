@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<h1>Administration Console</h1>
+<div class="card">
+  <h2>Customers</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Username</th><th>Role</th><th>Email</th><th>Card</th><th>SSN</th></tr></thead>
+    <tbody>
+      <% users.forEach(function(u){ %>
+        <tr><td><%= u.id %></td><td><%= u.username %></td>
+        <td><span class="badge <%= u.role==='admin'?'admin':'user' %>"><%= u.role %></span></td>
+        <td><%= u.email %></td><td style="font-family:ui-monospace,monospace"><%= u.card_number %></td>
+        <td style="font-family:ui-monospace,monospace"><%= u.ssn %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<div class="grid cols-2">
+  <div class="card">
+    <h2>Network diagnostics</h2>
+    <p class="muted" style="margin-top:-4px">Ping a host to verify connectivity.</p>
+    <form method="post" action="/admin/ping" style="display:flex;gap:10px">
+      <input name="host" placeholder="e.g. 127.0.0.1" style="flex:1">
+      <button class="btn navy">Ping</button>
+    </form>
+    <% if (output) { %><pre><%= output %></pre><% } %>
+  </div>
+  <div class="card">
+    <h2>System</h2>
+    <div class="grid quick" style="gap:12px">
+      <a href="/debug">🩺 &nbsp;Debug info</a>
+      <a href="/version">📦 &nbsp;Version</a>
+      <a href="/backup">🗄️ &nbsp;Backups</a>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>
